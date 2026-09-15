@@ -7,7 +7,7 @@
   <meta name="description" content="A² is a freelance creative and marketing studio in San Diego — photography, video, brand direction, logos, flyers, and email marketing for local businesses." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -47,12 +47,10 @@
     <section class="why">
       <div class="container why-grid">
         <div class="why-block">
-          <p class="index-num">01</p>
           <h3>Why now</h3>
           <p>Most small businesses in San Diego need this kind of help but can't justify hiring a full agency or a full-time marketer. A² fills that gap: two people who can move fast, work directly with the owner, and cover both the creative side and the marketing side under one roof.</p>
         </div>
         <div class="why-block">
-          <p class="index-num">02</p>
           <h3>Who we serve</h3>
           <p>Local San Diego businesses — restaurants, shops, service businesses, and other small brands — who want content and marketing that feels authentic and local, not generic stock-photo agency work.</p>
         </div>
@@ -67,17 +65,14 @@
         </div>
         <div class="offer-grid">
           <article class="offer-card">
-            <span class="offer-tag">SERVICE — 01</span>
             <h3>Content &amp; Storytelling</h3>
             <p>Photography, video, social content, and brand storytelling that captures what makes your business worth talking about.</p>
           </article>
           <article class="offer-card offer-card--dark">
-            <span class="offer-tag">SERVICE — 02</span>
             <h3>Brand &amp; Design</h3>
             <p>Logo design, brand direction, and flyers &amp; print materials — a clear, consistent look from your logo to the counter.</p>
           </article>
           <article class="offer-card">
-            <span class="offer-tag">SERVICE — 03</span>
             <h3>Marketing</h3>
             <p>Email marketing, campaign strategy, and ongoing content planning — so your content actually reaches new customers.</p>
           </article>
@@ -123,20 +118,12 @@
     <section class="different">
       <div class="container">
         <p class="eyebrow">How we're different</p>
-        <ul class="different-list">
-          <li>
-            <span class="index-num">01</span>
-            <span>Small and personal — clients work directly with us, not account managers.</span>
-          </li>
-          <li>
-            <span class="index-num">02</span>
-            <span>Local roots — we know San Diego and the kinds of businesses here.</span>
-          </li>
-          <li>
-            <span class="index-num">03</span>
-            <span>Full range — creative execution and marketing strategy in one place, so clients aren't juggling separate vendors.</span>
-          </li>
-        </ul>
+        <div class="slider">
+          <button class="slider-arrow" id="diffPrev" aria-label="Previous">&#8592;</button>
+          <p class="slider-text" id="diffText">Small and personal — clients work directly with us, not account managers.</p>
+          <button class="slider-arrow" id="diffNext" aria-label="Next">&#8594;</button>
+        </div>
+        <div class="slider-dots" id="diffDots"></div>
       </div>
     </section>
 
@@ -190,6 +177,49 @@
       <span>San Diego, CA · © 2026</span>
     </div>
   </footer>
+
+  <script>
+    const diffs = [
+      "Small and personal — clients work directly with us, not account managers.",
+      "Local roots — we know San Diego and the kinds of businesses here.",
+      "Full range — creative execution and marketing strategy in one place, so clients aren't juggling separate vendors."
+    ];
+    let diffIndex = 0;
+    const diffText = document.getElementById('diffText');
+    const diffDots = document.getElementById('diffDots');
+    const diffPrev = document.getElementById('diffPrev');
+    const diffNext = document.getElementById('diffNext');
+
+    function renderDots() {
+      diffDots.innerHTML = '';
+      diffs.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'slider-dot' + (i === diffIndex ? ' is-active' : '');
+        dot.addEventListener('click', () => { diffIndex = i; update(); });
+        diffDots.appendChild(dot);
+      });
+    }
+
+    function update() {
+      diffText.style.opacity = 0;
+      setTimeout(() => {
+        diffText.textContent = diffs[diffIndex];
+        diffText.style.opacity = 1;
+      }, 150);
+      renderDots();
+    }
+
+    diffPrev.addEventListener('click', () => {
+      diffIndex = (diffIndex - 1 + diffs.length) % diffs.length;
+      update();
+    });
+    diffNext.addEventListener('click', () => {
+      diffIndex = (diffIndex + 1) % diffs.length;
+      update();
+    });
+
+    renderDots();
+  </script>
 
 </body>
 </html>
