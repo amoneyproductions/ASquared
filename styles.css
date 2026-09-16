@@ -169,12 +169,18 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 /* ---- Hero ---- */
 .hero {
-  padding: 150px 0 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding-top: 130px;
+  padding-bottom: 72px;
 }
 
 .wordmark {
-  font-size: clamp(4.5rem, 17vw, 12rem);
+  font-size: clamp(5.5rem, 17vw, 12rem);
   margin: 0;
   letter-spacing: -0.04em;
   line-height: 0.92;
@@ -198,15 +204,28 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin: 26px auto 0;
 }
 
-.hero-frame { margin-top: 44px; }
-
-.hero-image {
-  width: 100%;
-  aspect-ratio: 16 / 8;
-  border-radius: 26px;
-  border: 1px solid var(--glass-edge);
-  box-shadow: var(--glass-shadow);
+.hero-cue {
+  margin-top: 54px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  transition: color 0.2s;
 }
+
+.hero-cue::after {
+  content: '';
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, var(--baseline, rgba(60,40,25,0.35)), transparent);
+}
+
+.hero-cue:hover { color: var(--maroon); }
 
 /* ---- Placeholders ---- */
 .placeholder {
@@ -616,7 +635,7 @@ input:focus, textarea:focus {
   .header-nav .nav-link { display: none; }
   .slider { gap: 12px; }
   .slider-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
-  .hero { padding: 120px 0 10px; }
+  .hero { padding-top: 110px; padding-bottom: 54px; }
   .wordmark-sub { letter-spacing: 0.36em; padding-left: 0.36em; }
   .footer-inner { flex-direction: column; gap: 10px; align-items: flex-start; }
 }
