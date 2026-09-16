@@ -1,6 +1,25 @@
-/* Work tile imagery. Real image files can replace these placeholder fills. */
+/* Work tile imagery. Drop a new file into assets/ and point a rule at it. */
+
 .work-tile { display: flex; }
-.work-tile--photo,
-.work-tile--brand {
-  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5) 12px, rgba(214,206,190,0.45) 12px, rgba(214,206,190,0.45) 24px);
+
+.work-tile--photo {
+  background-image:
+    linear-gradient(to bottom, rgba(23,20,15,0.80) 0%, rgba(23,20,15,0.30) 42%, rgba(23,20,15,0.06) 100%),
+    url("assets/film.jpg");
+  background-size: cover;
+  background-position: center;
 }
+
+.work-tile--brand {
+  background-image:
+    linear-gradient(to bottom, rgba(23,20,15,0.86) 0%, rgba(23,20,15,0.36) 42%, rgba(23,20,15,0.08) 100%),
+    url("assets/merit.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.work-tile--photo .work-tag,
+.work-tile--brand .work-tag { color: rgba(246,241,230,0.85); }
+
+.work-tile--photo .work-title,
+.work-tile--brand .work-title { color: #f6f1e6; }
