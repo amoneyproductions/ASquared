@@ -1,0 +1,6 @@
+/* Work tile imagery. Real image files can replace these placeholder fills. */
+.work-tile { display: flex; }
+.work-tile--photo,
+.work-tile--brand {
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5) 12px, rgba(214,206,190,0.45) 12px, rgba(214,206,190,0.45) 24px);
+}
