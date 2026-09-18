@@ -5,10 +5,14 @@
   --ink-faint:    #7c7466;
   --cream:        #f6f1e6;
   --maroon:       #8a2e42;
-  --glass:        rgba(252, 251, 246, 0.42);
-  --glass-strong: rgba(252, 251, 246, 0.62);
-  --glass-edge:   rgba(255, 255, 255, 0.55);
-  --glass-shadow: 0 24px 60px -20px rgba(60, 40, 25, 0.28);
+  --glass:        rgba(255, 255, 255, 0.32);
+  --glass-strong: rgba(255, 255, 255, 0.50);
+  --glass-edge:   rgba(255, 255, 255, 0.78);
+  --sheen:        linear-gradient(180deg, rgba(255,255,255,0.46) 0%, rgba(255,255,255,0.10) 38%, rgba(255,255,255,0.03) 100%);
+  --glass-shadow:
+    0 1px 2px rgba(58, 44, 32, 0.04),
+    0 10px 24px -10px rgba(58, 44, 32, 0.10),
+    0 36px 70px -30px rgba(58, 44, 32, 0.20);
   --max-width:    1180px;
 }
 
@@ -21,7 +25,7 @@ body {
   min-height: 100%;
   font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
-  background: #f1eee4;
+  background: #f7f5f0;
   line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -33,11 +37,11 @@ body {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(52vw 52vw at 12% 14%, rgba(138, 46, 66, 0.20), transparent 62%),
-    radial-gradient(46vw 46vw at 88% 10%, rgba(198, 168, 132, 0.20), transparent 62%),
-    radial-gradient(60vw 58vw at 78% 72%, rgba(122, 130, 116, 0.18), transparent 64%),
-    radial-gradient(48vw 44vw at 18% 86%, rgba(176, 126, 118, 0.16), transparent 62%),
-    linear-gradient(160deg, #f8f6ef 0%, #f1eee4 50%, #eae7db 100%);
+    radial-gradient(50vw 50vw at 14% 12%, rgba(138, 46, 66, 0.11), transparent 62%),
+    radial-gradient(44vw 44vw at 88% 8%, rgba(198, 168, 132, 0.12), transparent 62%),
+    radial-gradient(58vw 56vw at 80% 74%, rgba(122, 130, 116, 0.10), transparent 64%),
+    radial-gradient(46vw 42vw at 16% 88%, rgba(176, 126, 118, 0.09), transparent 62%),
+    linear-gradient(160deg, #fdfcfa 0%, #f7f5f0 48%, #f1eee7 100%);
 }
 
 .grain {
@@ -45,7 +49,7 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.28;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
@@ -77,11 +81,13 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   gap: 9px;
   padding: 7px 15px 7px 12px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.5);
-  border: 1px solid rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  font-size: 0.63rem;
   font-weight: 700;
   color: var(--ink-soft);
   margin: 0 0 20px;
@@ -96,16 +102,17 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 /* ---- Glass panel ---- */
 .panel {
-  border-radius: 26px;
-  background: var(--glass);
-  backdrop-filter: blur(26px) saturate(150%);
-  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  border-radius: 28px;
+  background-color: var(--glass);
+  background-image: var(--sheen);
+  backdrop-filter: blur(38px) saturate(180%);
+  -webkit-backdrop-filter: blur(38px) saturate(180%);
   border: 1px solid var(--glass-edge);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.7);
-  padding: 54px 52px;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.9);
+  padding: 60px 56px;
 }
 
-.section { padding: 34px 0; }
+.section { padding: 42px 0; }
 
 .section-head { margin-bottom: 2.4em; }
 
@@ -124,11 +131,12 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   align-items: center;
   padding: 12px 14px 12px 22px;
   border-radius: 999px;
-  background: var(--glass-strong);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background-color: rgba(255,255,255,0.56);
+  background-image: var(--sheen);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid var(--glass-edge);
-  box-shadow: 0 12px 32px -18px rgba(60,40,25,0.45);
+  box-shadow: 0 1px 2px rgba(58,44,32,0.04), 0 14px 34px -20px rgba(58,44,32,0.32);
   z-index: 40;
 }
 
@@ -229,15 +237,11 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 /* ---- Placeholders ---- */
 .placeholder {
-  background: repeating-linear-gradient(
-    135deg,
-    rgba(255,255,255,0.5),
-    rgba(255,255,255,0.5) 12px,
-    rgba(214,206,190,0.45) 12px,
-    rgba(214,206,190,0.45) 24px
-  );
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(255,255,255,0.42);
+  background-image: var(--sheen);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,8 +260,10 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 }
 
 .intro-sub {
-  max-width: 50ch;
-  font-size: 1.02rem;
+  max-width: 52ch;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.62;
   margin: 0;
 }
 
@@ -270,9 +276,12 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .why-block {
   border-radius: 18px;
-  background: var(--glass-strong);
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  background-color: var(--glass-strong);
+  background-image: var(--sheen);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow: 0 8px 22px -14px rgba(58,44,32,0.16), inset 0 1px 0 rgba(255,255,255,0.92);
   padding: 26px 26px 28px;
 }
 
@@ -281,7 +290,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin-bottom: 0.5em;
 }
 
-.why-block p { margin: 0; font-size: 0.92rem; line-height: 1.5; }
+.why-block p { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 1.04rem; line-height: 1.62; }
 
 /* ---- Offer ---- */
 .offer-grid {
@@ -292,9 +301,12 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .offer-card {
   border-radius: 18px;
-  background: var(--glass-strong);
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  background-color: var(--glass-strong);
+  background-image: var(--sheen);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow: 0 8px 22px -14px rgba(58,44,32,0.16), inset 0 1px 0 rgba(255,255,255,0.92);
   padding: 30px 26px;
   min-height: 210px;
   display: flex;
@@ -303,9 +315,10 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 }
 
 .offer-card--dark {
-  background: rgba(138, 46, 66, 0.9);
-  border-color: rgba(255,255,255,0.28);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
+  background-color: rgba(116, 32, 50, 0.95);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 42%);
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 18px 40px -20px rgba(80,22,36,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .offer-card h3 {
@@ -313,7 +326,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin-bottom: 0.45em;
 }
 
-.offer-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; }
+.offer-card p { margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 1rem; line-height: 1.6; }
 
 .offer-card--dark h3 { color: var(--cream); }
 .offer-card--dark p { color: rgba(246, 241, 230, 0.92); }
@@ -333,9 +346,9 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 .board-wrap {
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.72);
   background: var(--glass-strong);
-  box-shadow: 0 18px 40px -22px rgba(60,40,25,0.45);
+  box-shadow: 0 1px 2px rgba(58,44,32,0.04), 0 26px 54px -26px rgba(58,44,32,0.28);
 }
 
 .video-wrap video {
@@ -394,7 +407,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 .work-tile {
   position: relative;
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.72);
   padding: 18px;
   align-items: flex-end;
   justify-content: flex-start;
@@ -434,11 +447,12 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--glass-strong);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(255,255,255,0.6);
+  background-image: var(--sheen);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid var(--glass-edge);
-  box-shadow: 0 10px 24px -12px rgba(60,40,25,0.4);
+  box-shadow: 0 1px 2px rgba(58,44,32,0.04), 0 12px 26px -14px rgba(58,44,32,0.3);
   color: var(--ink);
   font-size: 1.05rem;
   cursor: pointer;
@@ -482,7 +496,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(60,40,25,0.26);
+  background: rgba(58,44,32,0.22);
   cursor: pointer;
   transition: background 0.18s, transform 0.18s;
 }
@@ -500,7 +514,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 .about-photo {
   aspect-ratio: 4 / 5;
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.72);
 }
 
 .about-text h2 {
@@ -508,7 +522,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin-bottom: 0.5em;
 }
 
-.about-text p { max-width: 50ch; margin: 0; font-size: 0.98rem; }
+.about-text p { max-width: 52ch; margin: 0; font-family: 'Bodoni Moda', Georgia, serif; font-size: 1.08rem; line-height: 1.62; }
 
 /* ---- Contact ---- */
 .contact h2 {
@@ -615,7 +629,7 @@ input:focus, textarea:focus {
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .panel { padding: 34px 26px; border-radius: 20px; }
+  .panel { padding: 36px 24px; border-radius: 22px; }
   .feature { grid-template-columns: 1fr; gap: 26px; }
   .video-wrap video { max-height: none; }
   .container { padding-left: 18px; padding-right: 18px; }
