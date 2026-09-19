@@ -592,9 +592,15 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   padding: 18px 0;
 }
 
-.modal-figure:not(.modal-figure--hero):not(.modal-figure--flat) img {
+.modal-figure:not(.modal-figure--hero):not(.modal-figure--flat):not(.modal-figure--post) img {
   max-height: 520px;
   object-fit: cover;
+}
+
+.modal-figure--post img {
+  background: #0d0d0d;
+  max-height: 720px;
+  object-fit: contain;
 }
 
 .modal-figure--flat img {
