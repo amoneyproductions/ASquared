@@ -91,7 +91,6 @@
             <span class="offer-arrow" aria-hidden="true">&#8594;</span>
           </li>
         </ol>
-        </div>
       </div>
     </section>
 
@@ -126,6 +125,20 @@
               <p>A concept board exploring brand mood and direction for a minimalist beauty label.</p>
             </figcaption>
           </figure>
+        </div>
+
+        <div class="projects">
+          <p class="rule-label">Selected project</p>
+          <button class="project-card" type="button" data-project="sweet-wheels">
+            <span class="project-thumb">
+              <img src="assets/sw-logo.jpg" alt="" />
+            </span>
+            <span class="project-meta">
+              <span class="project-name">Sweet Wheels</span>
+              <span class="project-kind">Brand identity, wrap design, launch</span>
+            </span>
+            <span class="project-open">View project</span>
+          </button>
         </div>
 
         <div class="work-grid">
@@ -207,6 +220,47 @@
 
   </main>
 
+
+  <div class="modal" id="projectModal" hidden>
+    <div class="modal-scrim" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectTitle">
+      <button class="modal-close" type="button" data-close aria-label="Close project">&#215;</button>
+
+      <header class="modal-head">
+        <p class="rule-label">Case study</p>
+        <h2 id="projectTitle">Sweet Wheels</h2>
+        <p class="modal-lede">An ice cream truck with nothing but a name. We drew the logo, set the palette, designed the wrap, and built the mockups that got it approved. It is on the road now.</p>
+        <ul class="modal-tags">
+          <li>Logo design</li>
+          <li>Color palette</li>
+          <li>Vehicle wrap</li>
+          <li>Mockups</li>
+          <li>Launch content</li>
+        </ul>
+      </header>
+
+      <figure class="modal-figure modal-figure--hero">
+        <img src="assets/sw-logo.jpg" alt="Sweet Wheels logo, a mermaid riding a bicycle inside a circular badge" />
+        <figcaption>The mark. A mermaid on a beach cruiser, drawn to read at truck scale and at profile-photo scale.</figcaption>
+      </figure>
+
+      <figure class="modal-figure modal-figure--flat">
+        <img src="assets/sw-palette.jpg" alt="Sweet Wheels brand color palette" />
+        <figcaption>The palette, built around the mark so every flyer, cup, and post matches the truck.</figcaption>
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/sw-mockup.jpg" alt="Mockup of the Sweet Wheels truck parked by the water" />
+        <figcaption>Wrap concepts, mocked up in place so the owner could see it before committing to paint.</figcaption>
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/sw-truck.jpg" alt="The finished Sweet Wheels truck with the wrap applied" />
+        <figcaption>The finished truck. Same mark, same colors, start to finish.</figcaption>
+      </figure>
+    </div>
+  </div>
+
   <footer class="site-footer container">
     <div class="footer-inner">
       <span class="footer-wordmark">A² Studios</span>
@@ -255,6 +309,31 @@
     });
 
     renderDots();
+
+    const modal = document.getElementById('projectModal');
+    const openers = document.querySelectorAll('[data-project]');
+    let lastFocus = null;
+
+    function openProject() {
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      document.body.style.overflow = 'hidden';
+      modal.querySelector('.modal-close').focus();
+    }
+
+    function closeProject() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(() => { modal.hidden = true; }, 260);
+      if (lastFocus) lastFocus.focus();
+    }
+
+    openers.forEach(btn => btn.addEventListener('click', openProject));
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeProject));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.hidden) closeProject();
+    });
   </script>
 
 </body>
