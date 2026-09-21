@@ -39,13 +39,18 @@
       <div class="panel intro-grid">
         <p class="rule-label">Creative &amp; marketing studio</p>
         <h2>Your story, your vision, told with a personal touch by people who actually know San Diego.</h2>
-        <ul class="capabilities">
-          <li>Photography &amp; video</li>
-          <li>Logos &amp; the overall look</li>
-          <li>Flyers &amp; print</li>
-          <li>Email marketing</li>
-          <li>Planning what goes out</li>
-        </ul>
+        <div class="rotator">
+          <p class="rotator-label">We do</p>
+          <ul class="capabilities" id="capList">
+            <li>Photography &amp; video</li>
+            <li>Social posts</li>
+            <li>Logos &amp; the overall look</li>
+            <li>Flyers &amp; print</li>
+            <li>Email marketing</li>
+            <li>Planning what goes out</li>
+          </ul>
+          <div class="rotator-track"><span class="rotator-fill" id="capFill"></span></div>
+        </div>
         <p class="intro-sub">One place, start to finish.</p>
       </div>
     </section>
@@ -379,6 +384,36 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !modal.hidden) closeProject();
     });
+    const capList = document.getElementById('capList');
+    const capFill = document.getElementById('capFill');
+    const caps = capList ? Array.from(capList.children) : [];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (caps.length && !reduceMotion) {
+      capList.classList.add('is-rotating');
+      let capIndex = 0;
+      caps[0].classList.add('is-active');
+      setInterval(() => {
+        caps[capIndex].classList.remove('is-active');
+        capIndex = (capIndex + 1) % caps.length;
+        caps[capIndex].classList.add('is-active');
+        if (capFill) {
+          capFill.style.transition = 'none';
+          capFill.style.width = '0%';
+          requestAnimationFrame(() => {
+            capFill.style.transition = 'width 2.6s linear';
+            capFill.style.width = '100%';
+          });
+        }
+      }, 2600);
+      if (capFill) {
+        requestAnimationFrame(() => {
+          capFill.style.transition = 'width 2.6s linear';
+          capFill.style.width = '100%';
+        });
+      }
+    }
+
   </script>
 
 </body>
