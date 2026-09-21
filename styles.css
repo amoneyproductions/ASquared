@@ -395,7 +395,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin-bottom: 0.5em;
 }
 
-.why-block p { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.02rem; line-height: 1.66; color: #3c362c; }
+.why-block p { margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 1.08rem; line-height: 1.64; color: #3a342b; }
 
 /* ---- Offer index ---- */
 .offer-index {
@@ -439,8 +439,8 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .offer-row p {
   margin: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.05rem;
   line-height: 1.62;
   color: #3c362c;
   max-width: 46ch;
@@ -600,8 +600,8 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .modal-lede {
   margin: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 1.06rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.12rem;
   line-height: 1.66;
   color: #3c362c;
 }
@@ -640,7 +640,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .modal-figure figcaption {
   margin-top: 14px;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 0.96rem;
   line-height: 1.6;
   color: var(--ink-faint);
@@ -699,7 +699,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .modal-meta dd {
   margin: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 1rem;
   line-height: 1.4;
   color: #3c362c;
@@ -750,7 +750,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
 
 .results-note {
   display: block;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 0.96rem;
   line-height: 1.5;
   color: #3c362c;
@@ -957,7 +957,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   margin-bottom: 0.5em;
 }
 
-.about-text p { max-width: 52ch; margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem; line-height: 1.66; color: #3c362c; }
+.about-text p { max-width: 52ch; margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 1.1rem; line-height: 1.66; color: #3c362c; }
 
 /* ---- Contact ---- */
 .contact h2 {
