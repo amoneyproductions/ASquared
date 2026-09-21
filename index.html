@@ -49,7 +49,7 @@
             <li>Email marketing</li>
             <li>Planning what goes out</li>
           </ul>
-          <div class="rotator-track"><span class="rotator-fill" id="capFill"></span></div>
+          <svg class="spiral" viewBox="0 0 88 88" width="86" height="86" aria-hidden="true"><circle cx="28.56" cy="13.71" r="2.10" style="animation-delay:0ms" /><circle cx="59.44" cy="74.29" r="2.10" style="animation-delay:17ms" /><circle cx="24.03" cy="18.03" r="2.05" style="animation-delay:34ms" /><circle cx="63.97" cy="69.97" r="2.05" style="animation-delay:51ms" /><circle cx="20.53" cy="22.96" r="2.00" style="animation-delay:68ms" /><circle cx="67.47" cy="65.04" r="2.00" style="animation-delay:85ms" /><circle cx="18.13" cy="28.27" r="1.95" style="animation-delay:102ms" /><circle cx="69.87" cy="59.73" r="1.95" style="animation-delay:119ms" /><circle cx="16.84" cy="33.72" r="1.90" style="animation-delay:136ms" /><circle cx="71.16" cy="54.28" r="1.90" style="animation-delay:153ms" /><circle cx="16.63" cy="39.09" r="1.85" style="animation-delay:170ms" /><circle cx="71.37" cy="48.91" r="1.85" style="animation-delay:187ms" /><circle cx="17.44" cy="44.18" r="1.80" style="animation-delay:204ms" /><circle cx="70.56" cy="43.82" r="1.80" style="animation-delay:221ms" /><circle cx="19.14" cy="48.81" r="1.75" style="animation-delay:238ms" /><circle cx="68.86" cy="39.19" r="1.75" style="animation-delay:255ms" /><circle cx="21.59" cy="52.84" r="1.70" style="animation-delay:272ms" /><circle cx="66.41" cy="35.16" r="1.70" style="animation-delay:289ms" /><circle cx="24.64" cy="56.14" r="1.65" style="animation-delay:306ms" /><circle cx="63.36" cy="31.86" r="1.65" style="animation-delay:323ms" /><circle cx="28.11" cy="58.64" r="1.60" style="animation-delay:340ms" /><circle cx="59.89" cy="29.36" r="1.60" style="animation-delay:357ms" /><circle cx="31.80" cy="60.31" r="1.55" style="animation-delay:374ms" /><circle cx="56.20" cy="27.69" r="1.55" style="animation-delay:391ms" /><circle cx="35.55" cy="61.16" r="1.50" style="animation-delay:408ms" /><circle cx="52.45" cy="26.84" r="1.50" style="animation-delay:425ms" /><circle cx="39.17" cy="61.23" r="1.45" style="animation-delay:442ms" /><circle cx="48.83" cy="26.77" r="1.45" style="animation-delay:459ms" /><circle cx="42.52" cy="60.59" r="1.40" style="animation-delay:476ms" /><circle cx="45.48" cy="27.41" r="1.40" style="animation-delay:493ms" /><circle cx="45.47" cy="59.34" r="1.35" style="animation-delay:510ms" /><circle cx="42.53" cy="28.66" r="1.35" style="animation-delay:527ms" /><circle cx="47.92" cy="57.62" r="1.30" style="animation-delay:544ms" /><circle cx="40.08" cy="30.38" r="1.30" style="animation-delay:561ms" /><circle cx="49.79" cy="55.56" r="1.25" style="animation-delay:578ms" /><circle cx="38.21" cy="32.44" r="1.25" style="animation-delay:595ms" /><circle cx="51.07" cy="53.32" r="1.20" style="animation-delay:612ms" /><circle cx="36.93" cy="34.68" r="1.20" style="animation-delay:629ms" /><circle cx="51.74" cy="51.03" r="1.15" style="animation-delay:646ms" /><circle cx="36.26" cy="36.97" r="1.15" style="animation-delay:663ms" /><circle cx="51.84" cy="48.84" r="1.10" style="animation-delay:680ms" /><circle cx="36.16" cy="39.16" r="1.10" style="animation-delay:697ms" /><circle cx="51.44" cy="46.88" r="1.05" style="animation-delay:714ms" /><circle cx="36.56" cy="41.12" r="1.05" style="animation-delay:731ms" /><circle cx="50.62" cy="45.24" r="1.00" style="animation-delay:748ms" /><circle cx="37.38" cy="42.76" r="1.00" style="animation-delay:765ms" /><circle cx="49.50" cy="44.00" r="0.95" style="animation-delay:782ms" /><circle cx="38.50" cy="44.00" r="0.95" style="animation-delay:799ms" /></svg>
         </div>
         <p class="intro-sub">One place, start to finish.</p>
       </div>
@@ -385,7 +385,6 @@
       if (e.key === 'Escape' && !modal.hidden) closeProject();
     });
     const capList = document.getElementById('capList');
-    const capFill = document.getElementById('capFill');
     const caps = capList ? Array.from(capList.children) : [];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -397,21 +396,7 @@
         caps[capIndex].classList.remove('is-active');
         capIndex = (capIndex + 1) % caps.length;
         caps[capIndex].classList.add('is-active');
-        if (capFill) {
-          capFill.style.transition = 'none';
-          capFill.style.width = '0%';
-          requestAnimationFrame(() => {
-            capFill.style.transition = 'width 2.6s linear';
-            capFill.style.width = '100%';
-          });
-        }
       }, 2600);
-      if (capFill) {
-        requestAnimationFrame(() => {
-          capFill.style.transition = 'width 2.6s linear';
-          capFill.style.width = '100%';
-        });
-      }
     }
 
   </script>

@@ -310,7 +310,7 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sage);
+  color: var(--maroon);
 }
 
 .capabilities {
@@ -348,19 +348,28 @@ ul { padding-left: 0; list-style: none; margin: 0; }
   transform: translateY(0);
 }
 
-.rotator-track {
-  margin-top: 18px;
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(23, 20, 15, 0.08);
-  overflow: hidden;
+.spiral {
+  display: block;
+  margin-top: 20px;
+  overflow: visible;
 }
 
-.rotator-fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: var(--sage);
+.spiral circle {
+  fill: #6f2233;
+  opacity: 0.12;
+  animation: dotTrace 2.6s linear infinite;
+}
+
+@keyframes dotTrace {
+  0%   { opacity: 0.1; }
+  18%  { opacity: 1; }
+  52%  { opacity: 1; }
+  78%  { opacity: 0.1; }
+  100% { opacity: 0.1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spiral circle { animation: none; opacity: 0.85; }
 }
 
 /* ---- Why ---- */
