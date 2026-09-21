@@ -133,17 +133,30 @@
         </div>
 
         <div class="projects">
-          <p class="rule-label">Selected project</p>
-          <button class="project-card" type="button" data-project="sweet-wheels">
-            <span class="project-thumb">
-              <img src="assets/sw-logo.jpg" alt="" />
-            </span>
-            <span class="project-meta">
-              <span class="project-name">Sweet Wheels</span>
-              <span class="project-kind">Logo, colors, truck design</span>
-            </span>
-            <span class="project-open">View project</span>
-          </button>
+          <p class="rule-label">Selected projects</p>
+          <div class="project-list">
+            <button class="project-card" type="button" data-project="sweet-wheels">
+              <span class="project-thumb">
+                <img src="assets/sw-logo.jpg" alt="" />
+              </span>
+              <span class="project-meta">
+                <span class="project-name">Sweet Wheels</span>
+                <span class="project-kind">Logo, colors, truck design</span>
+              </span>
+              <span class="project-open">View project</span>
+            </button>
+
+            <button class="project-card" type="button" data-project="hokena">
+              <span class="project-thumb">
+                <img src="assets/hk-rack.jpg" alt="" />
+              </span>
+              <span class="project-meta">
+                <span class="project-name">Hokena Swim</span>
+                <span class="project-kind">Event photos, product photos, social</span>
+              </span>
+              <span class="project-open">View project</span>
+            </button>
+          </div>
         </div>
 
         <div class="work-grid">
@@ -226,7 +239,7 @@
   </main>
 
 
-  <div class="modal" id="projectModal" hidden>
+  <div class="modal" data-modal="sweet-wheels" hidden>
     <div class="modal-scrim" data-close></div>
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectTitle">
       <button class="modal-close" type="button" data-close aria-label="Close project">&#215;</button>
@@ -311,6 +324,92 @@
     </div>
   </div>
 
+  <div class="modal" data-modal="hokena" hidden>
+    <div class="modal-scrim" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="hokenaTitle">
+      <button class="modal-close" type="button" data-close aria-label="Close project">&#215;</button>
+
+      <header class="modal-head">
+        <p class="rule-label">Project</p>
+        <h2 id="hokenaTitle">Hokena Swim</h2>
+
+        <dl class="modal-meta">
+          <div>
+            <dt>Client</dt>
+            <dd>Hokena Swim, small batch swimwear</dd>
+          </div>
+          <div>
+            <dt>Where</dt>
+            <dd>Coachella Valley and Point Loma</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Event and product photography, social</dd>
+          </div>
+        </dl>
+      </header>
+
+      <section class="results" aria-label="Results">
+        <p class="results-label">What came of it</p>
+        <ol class="results-figures">
+          <li>
+            <span class="results-num">2</span>
+            <span class="results-note">Events shot in one season, Reset Festival in the Coachella Valley and a wellness morning at Moniker General in Liberty Station</span>
+          </li>
+          <li>
+            <span class="results-num">3</span>
+            <span class="results-note">Kinds of photos from each day: the suits, the booth, and the people who came</span>
+          </li>
+          <li>
+            <span class="results-num">1</span>
+            <span class="results-note">Library of photos to post from all year, shot over two days</span>
+          </li>
+          <li>
+            <span class="results-num">5%</span>
+            <span class="results-note">Of every sale goes to Surfrider San Diego or the Humane Society, and the booth photos put that where people read it first</span>
+          </li>
+        </ol>
+      </section>
+
+      <div class="modal-body">
+        <p class="modal-lede">Hokena makes swimwear by hand in San Diego, in small runs, on recycled fabric. We went where their customers already were and shot two days of it: the suits on people, the booth as it actually looked, and the crowd around it. They walked away with photos for the shop, for the feed, and for the next market they apply to.</p>
+        <ul class="modal-tags">
+          <li>Event photography</li>
+          <li>Product photos</li>
+          <li>Social content</li>
+        </ul>
+      </div>
+
+      <figure class="modal-figure modal-figure--hero">
+        <img src="assets/hk-product.jpg" alt="Hokena Swim orchid print bikini photographed in sunlight" />
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/hk-product2.jpg" alt="Hokena Swim high waist set photographed against a green hedge" />
+        <figcaption>The suits on a person, in daylight, the way someone would actually wear them.</figcaption>
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/hk-booth.jpg" alt="The Hokena Swim booth with hand lettered sign and gold hangers" />
+        <figcaption>Reset Festival, Coachella Valley. The hand lettered board and the gold hangers are theirs; we shot the booth as it stood.</figcaption>
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/hk-rack.jpg" alt="Close up of Hokena Swim suits on hangers with recycled fabric tags" />
+        <figcaption>Close enough to see the recycled fabric tags, which is the part people ask about.</figcaption>
+      </figure>
+
+      <figure class="modal-figure">
+        <img src="assets/hk-event.jpg" alt="A wellness class on the deck at Moniker General in Liberty Station" />
+        <figcaption>Moniker General, Liberty Station. A wellness morning with the brand set up alongside it.</figcaption>
+      </figure>
+
+      <figure class="modal-figure modal-figure--flat">
+        <img src="assets/hk-sign.jpg" alt="Team member holding the hand lettered Hokena Swim sign at the event" />
+      </figure>
+    </div>
+  </div>
+
   <footer class="site-footer container">
     <div class="footer-inner">
       <span class="footer-wordmark">A² Studios</span>
@@ -360,30 +459,41 @@
 
     renderDots();
 
-    const modal = document.getElementById('projectModal');
-    const openers = document.querySelectorAll('[data-project]');
+    const modals = {};
+    document.querySelectorAll('[data-modal]').forEach(m => { modals[m.dataset.modal] = m; });
+    let activeModal = null;
     let lastFocus = null;
 
-    function openProject() {
+    function openProject(key) {
+      const m = modals[key];
+      if (!m) return;
+      activeModal = m;
       lastFocus = document.activeElement;
-      modal.hidden = false;
-      requestAnimationFrame(() => modal.classList.add('is-open'));
+      m.hidden = false;
+      requestAnimationFrame(() => m.classList.add('is-open'));
       document.body.style.overflow = 'hidden';
-      modal.querySelector('.modal-close').focus();
+      m.scrollTop = 0;
+      m.querySelector('.modal-close').focus();
     }
 
     function closeProject() {
-      modal.classList.remove('is-open');
+      if (!activeModal) return;
+      const m = activeModal;
+      m.classList.remove('is-open');
       document.body.style.overflow = '';
-      setTimeout(() => { modal.hidden = true; }, 260);
+      setTimeout(() => { m.hidden = true; }, 260);
       if (lastFocus) lastFocus.focus();
+      activeModal = null;
     }
 
-    openers.forEach(btn => btn.addEventListener('click', openProject));
-    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeProject));
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !modal.hidden) closeProject();
+    document.querySelectorAll('[data-project]').forEach(btn => {
+      btn.addEventListener('click', () => openProject(btn.dataset.project));
     });
+    document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeProject));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && activeModal) closeProject();
+    });
+
     const capList = document.getElementById('capList');
     const caps = capList ? Array.from(capList.children) : [];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
